@@ -29,6 +29,7 @@ import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.MT;
 import gregapi.data.OP;
+import gregapi.data.CS.ConfigsGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -60,6 +61,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 		
 		final boolean tSlime = (aChunk.getRandomWithSeed(987234911L).nextInt(10) == 0);
 		final NoiseGenerator tNoise = new NoiseGenerator(aWorld);
+		tNoise.setFrequency((float)ConfigsGT.WORLDGEN.get("stonelayers", "noiseScaleX", 0.009f), (float)ConfigsGT.WORLDGEN.get("stonelayers", "noiseScaleY", 0.075F), (float)ConfigsGT.WORLDGEN.get("stonelayers", "noiseScaleZ", 0.009F));
 		final ExtendedBlockStorage[] aStorages = aChunk.getBlockStorageArray();
 		final int tListSize = StoneLayer.LAYERS.size(), tMaxHeight = aChunk.getTopFilledSegment()+15;
 		final StoneLayer[] tScan = new StoneLayer[9];
