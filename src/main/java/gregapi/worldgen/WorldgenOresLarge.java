@@ -93,13 +93,13 @@ public class WorldgenOresLarge extends WorldgenObject {
 		if (mIndicatorRocks && (!(GENERATE_STREETS && aWorld.provider.dimensionId == 0) || (Math.abs(aMinX) >= 64 && Math.abs(aMaxX) >= 64 && Math.abs(aMinZ) >= 64 && Math.abs(aMaxZ) >= 64))) {
 			MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 			if (tRegistry != null) {
-				for (int i = 0, j = 1+aRandom.nextInt(3); i < j; i++) {
+				for (int i = 0, j = 2+aRandom.nextInt(3); i < j; i++) {
 					int tX = aMinX + aRandom.nextInt(16), tZ = aMinZ + aRandom.nextInt(16);
 					for (int tY = Math.min(aWorld.getHeight(), tMinY+25); tY >= tMinY-10 && tY > 0; tY--) {
 						Block tContact = aChunk.getBlock(tX&15, tY, tZ&15);
 						if (tContact.getMaterial().isLiquid()) break;
 						if (!tContact.isOpaqueCube()) continue;
-						if (tContact.getMaterial() != Material.grass && tContact.getMaterial() != Material.ground && tContact.getMaterial() != Material.sand && tContact.getMaterial() != Material.rock) break;
+						if (tContact.getMaterial() != Material.rock) break;
 						if (WD.easyRep(aWorld, tX, tY+1, tZ)) tRegistry.mBlock.placeBlock(aWorld, tX, tY+1, tZ, SIDE_UNKNOWN, (short)32757, aRandom.nextInt(3)!=0?ST.save(NBT_VALUE, OP.rockGt.mat(UT.Code.select(mTop, mTop, mBottom, mBetween, mSpread), 1)):UT.NBT.make(), F, T);
 						break;
 					}
