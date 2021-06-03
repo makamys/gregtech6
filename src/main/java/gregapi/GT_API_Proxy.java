@@ -168,7 +168,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler, IFuelHandler, IWorldGenerator {
 	public GT_API_Proxy() {
 		GameRegistry.registerFuelHandler(this);
-		GameRegistry.registerWorldGenerator(this, Integer.MAX_VALUE);
+		GameRegistry.registerWorldGenerator(this, 9999);
 		MinecraftForge.EVENT_BUS.register(this);
 		FMLCommonHandler.instance().bus().register(this);
 	}
